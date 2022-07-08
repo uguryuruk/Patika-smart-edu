@@ -1,0 +1,28 @@
+{
+  "name": "patika-smart-edu",
+  "version": "1.0.0",
+  "description": "Patika nodejs smart edu projesidir.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uguryuruk/Patika-smart-edu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uguryuruk/Patika-smart-edu/issues"
+  },
+  "homepage": "https://github.com/uguryuruk/Patika-smart-edu#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}
