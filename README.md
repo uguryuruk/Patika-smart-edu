@@ -9,4 +9,8 @@ Patika nodejs smart edu projesidir. Kurs oluşturulan, kursa hoca atanabilen, ö
 * pageContoller ve app ile bağlanmıştır.
 ### Ders 4-7
 * Course sayfası, listeleme ve tekil sayfa oluşturulmuştur.
+### Ders 8
+* Category modeli, controller ve kategoriye göre filtreleme eklendi.
+### Ders 9
+* Kayıt sayfası işlemleri, user modeli, kayıt sırasında hashed password (bcrypt)
 

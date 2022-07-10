@@ -20,7 +20,11 @@ const CourseSchema = new Schema({
     slug:{
         type:String,
         unique:true,
-
+    },
+    //foreign key:
+    category:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
     }
 });
 
