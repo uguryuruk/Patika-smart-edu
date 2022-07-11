@@ -1,3 +1,5 @@
+//get pages
+
 exports.getAboutPage = (req, res) => {
   res.status(200).render("about", {
     page_name: "about",
@@ -5,6 +7,7 @@ exports.getAboutPage = (req, res) => {
 };
 
 exports.getIndexPage = (req, res) => {
+  console.log(req.session.userID);
   res.status(200).render("index", {
     page_name: "index",
   });

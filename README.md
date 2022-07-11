@@ -13,4 +13,10 @@ Patika nodejs smart edu projesidir. Kurs oluşturulan, kursa hoca atanabilen, ö
 * Category modeli, controller ve kategoriye göre filtreleme eklendi.
 ### Ders 9
 * Kayıt sayfası işlemleri, user modeli, kayıt sırasında hashed password (bcrypt)
+### Ders 10
+* Login işlemi
+### Ders 11
+* Session oluşturma
+### Ders 12
+* Logout işlemi(session destroy), ayrıca mongo-connect ile session saklama.
 
