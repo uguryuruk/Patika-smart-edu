@@ -4,11 +4,14 @@ const Category = require("../models/Category");
 //add a new course
 exports.createCourse = async (req, res) => {
   try {
-    const course = await Course.create(req.body);
-    res.status(201).json({
-      status: "success",
-      course,
+    const course = await Course.create({
+      name:req.body.name,
+      description:req.body.description,
+      category:req.body.category,
+      user:req.session.userID  //user info is coming from session
     });
+
+    res.status(201).redirect('/courses');
   } catch (error) {
     res.status(400).json({
       status: "fail",
@@ -28,7 +31,8 @@ exports.getAllCourses = async (req, res) => {
     if(categorySlug) filter={category:category._id}
 
     //get all courses & categories
-    const courses = await Course.find(filter);
+    //order by createdAt desc
+    const courses = await Course.find(filter).sort('-createdAt');
     const categories=await Category.find();
 
     res.status(200).render('courses',{
@@ -46,7 +50,8 @@ exports.getAllCourses = async (req, res) => {
 //get one course
 exports.getCourse = async (req, res) => {
   try {
-    const course = await Course.findOne({slug:req.params.slug});
+    //with populate, you can use user's details like name, email etc.
+    const course = await Course.findOne({slug:req.params.slug}).populate('user');
     res.status(200).render('course-single',{
         course,
         page_name:'course'
