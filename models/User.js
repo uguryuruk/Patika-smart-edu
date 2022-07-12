@@ -20,12 +20,17 @@ const UserSchema = new Schema({
     type: String,
     enum:["student", "teacher", "admin"], //alabileceği değerler
     default: "student"
-  }
+  },
+  courses:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Course'
+  }]
 });
 
 //bcrypt middleware
 UserSchema.pre('save',function (next) {
   const user=this;
+  if (!this.isModified('password')) return next();
   //saltOrRounds means complexitiy of the crypted password
   bcrypt.hash(user.password,10,(error,hash)=>{
     user.password=hash; //hashed password

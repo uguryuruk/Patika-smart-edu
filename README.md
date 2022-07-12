@@ -20,7 +20,17 @@ Patika nodejs smart edu projesidir. Kurs oluşturulan, kursa hoca atanabilen, ö
 ### Ders 12
 * Logout işlemi(session destroy), ayrıca mongo-connect ile session saklama.
 ### ders 13-16 
-* Role ve Route Protection işlemleri
+* Role ve Route Protection işlemleri(middleware oluşturulması)
 ### Ders 17
 * Kurs-öğretmen ilişkisi, kursun ait olduğu öğretmeni ve öğretmene ait kursları listeleme.
+
+### Ders 18
+* Öğrenci olarak Kursa kaydolma ve kayıt olduğu kursları görüntüleme
+### Ders 19
+* Kurstan çıkma (release)
+* Text truncate (belli kısmı aşan metni ... yapma)
+### Ders 20
+* Arama fonksiyonu
+* Tek kurs sayfasında kategorilerin eklenmesi
+* Kursun altında öğretmen adının gözükmesi
 
