@@ -12,12 +12,14 @@ exports.createCourse = async (req, res) => {
       user: req.session.userID, //user info is coming from session
     });
 
+    //successfully added
+    req.flash("success",`${course.name} has been created successfully!`);
+
     res.status(201).redirect("/courses");
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      error,
-    });
+    req.flash("error",`An error has occured!`);
+
+    res.status(400).redirect("/courses");
   }
 };
 //LiST ALL courses
@@ -91,10 +93,13 @@ exports.getCourse = async (req, res) => {
 exports.enrollCourse = async (req, res) => {
   try {
     //adds course to User model
-    const user = await User.findById(req.session.userID);
-    await user.courses.push({ _id: req.body.course_id });
+    const user = await User.findById(req.session.userID).populate('courses');
+     user.courses.push({ _id: req.body.course_id });
     await user.save();
+    let lastCourse= await Course.findById(user.courses.at(-1)._id);
 
+    
+    req.flash("success",`You have enrolled to ${lastCourse.name} successfully!`);
     res.status(200).redirect("/users/dashboard");
   } catch (error) {
     res.status(400).json({
@@ -103,18 +108,55 @@ exports.enrollCourse = async (req, res) => {
     });
   }
 };
-//enroll one course
+//quit from the course
 exports.releaseCourse = async (req, res) => {
   try {
     //adds course to User model
     const user = await User.findById(req.session.userID);
+    deletedCourse= await Course.findById(req.body.course_id);
+
     await user.courses.pull({ _id: req.body.course_id });
     await user.save();
-
+    
+    req.flash("success",`You have quitted from the course ${deletedCourse.name}.`);
     res.status(200).redirect("/users/dashboard");
   } catch (error) {
     res.status(400).json({
       status: "fail",
+      error,
+    });
+  }
+};
+exports.deleteCourse = async (req, res) => {
+  try {
+    const course=await Course.findOneAndRemove({slug:req.params.slug});
+    //delete from enrolled students:TODO TEST
+    // await User.courses.deleteMany({_id:course._id});
+    req.flash("success",`You have removed the ${course.name}.`);
+    res.status(200).redirect("/users/dashboard");
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+exports.updateCourse = async (req, res) => {
+  try {    
+    //Find the course
+    const course = await Course.findOne({slug:req.params.slug});
+    //update db
+    course.name = req.body.name;
+    course.description = req.body.description;
+    course.category = req.body.category;
+
+    course.save();
+
+    res.status(200).redirect('/users/dashboard');
+
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
       error,
     });
   }

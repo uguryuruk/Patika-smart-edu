@@ -12,6 +12,17 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-9 blog-post-single">
+						<% if(flashMessages) { %>
+							<% if(flashMessages.success) { %>
+								<div class="alert alert-success">
+									<%= flashMessages.success %>
+								</div>
+							<% } else if(flashMessages.error) { %>
+								<div class="alert alert-danger">
+									<%= flashMessages.error %>
+								</div>
+								<% } %>
+						<% } %>
 						<div class="row">
 
 							<% for (let i=0;i<courses.length;i++) { %>
@@ -58,6 +69,7 @@
 							</form>
 						</div>
 					</div>
+					<!-- TODO: make partial with course-single -->
 					<div class="widget-categories">
 						<h3 class="widget-title">Categories</h3>
 						<ul>

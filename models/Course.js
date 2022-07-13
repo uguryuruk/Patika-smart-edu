@@ -21,12 +21,12 @@ const CourseSchema = new Schema({
         type:String,
         unique:true,
     },
-    //foreign key:
+    //foreign key: Çourse category
     category:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
-    //foreign key:
+    //foreign key: Creator Teacher
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -34,14 +34,14 @@ const CourseSchema = new Schema({
 });
 
 CourseSchema.pre('validate',function (next) {
-    //this leri yakalamak için function kullandık.
+    //we have used 'function' instead of arrow in order to catch 'this'.
     this.slug=slugify(this.name,{
         lower:true,
-        strict:true  //sadece string karakterleri alır.
+        strict:true  //only strings.
     });
-    next();  //sıradaki middleware geçer.
+    next();  //jump to the next middleware.
 })
-//modele çevirme:
+//modeling:
 const Course=mongoose.model('Course',CourseSchema);
 
 //exporting

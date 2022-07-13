@@ -33,4 +33,19 @@ Patika nodejs smart edu projesidir. Kurs oluşturulan, kursa hoca atanabilen, ö
 * Arama fonksiyonu
 * Tek kurs sayfasında kategorilerin eklenmesi
 * Kursun altında öğretmen adının gözükmesi
+### Ders 21
+* Mail ayarları, iletişim sayfasından mail göndermek
+### Ders 22
+* İletişim sayfası, kurs sayfasına olumlu ve hata bildirimleri eklendi.
 
+### Ders 23
+* Register ve Login için Data validation yapıldı.
+### Ders 24-25
+* Kurs Silme ve Güncelleme Yapıldı (Teacher için)
+### Ders 26
+* Admin dashboard oluşturulması
+* Kullanıcı silmek
+* kullanıcı öğretmense, ilgili kurslarını silmek.
+### Ders 27
+* Kategori Ekleme - Silme
+* Ana sayfaya istatistikleri yansıtma yapıldı.
