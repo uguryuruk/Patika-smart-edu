@@ -31,7 +31,7 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    // FIXME
+    // DONE
     if (user) {
       bcrypt.compare(password, user.password, (err, same) => {
         console.log(err);

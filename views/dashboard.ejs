@@ -15,17 +15,9 @@
 				<div id="overviews" class="section wb">
 					<div class="container">
 						<div class="row">
-							<% if(flashMessages) { %>
-								<% if(flashMessages.success) { %>
-									<div class="alert alert-success">
-										<%= flashMessages.success %>
-									</div>
-								<% } else if(flashMessages.error) { %>
-									<div class="alert alert-danger">
-										<%= flashMessages.error %>
-									</div>
-									<% } %>
-							<% } %>
+					
+							<%- include('partials/_alerts'); %>
+
 							<div class="col-lg-12 blog-post-single">
 								<div class="blog-author">
 									<div class="author-bio">
@@ -88,17 +80,9 @@
 				<div id="overviews" class="section wb">
 					<div class="container">
 						<div class="row">
-							<% if(flashMessages) { %>
-								<% if(flashMessages.success) { %>
-									<div class="alert alert-success">
-										<%= flashMessages.success %>
-									</div>
-								<% } else if(flashMessages.error) { %>
-									<div class="alert alert-danger">
-										<%= flashMessages.error %>
-									</div>
-									<% } %>
-							<% } %>
+					
+							<%- include('partials/_alerts'); %>
+
 							<!-- Modal Button -->
 							<div class="col-lg-12 text-center ">
 								<button class="btn btn-lg btn-warning rounded-0 text-white" href="#"
@@ -282,17 +266,9 @@
 					<div id="overviews" class="section wb">
 						<div class="container">
 							<div class="row">
-								<% if(flashMessages) { %>
-									<% if(flashMessages.success) { %>
-										<div class="alert alert-success">
-											<%= flashMessages.success %>
-										</div>
-									<% } else if(flashMessages.error) { %>
-										<div class="alert alert-danger">
-											<%= flashMessages.error %>
-										</div>
-										<% } %>
-								<% } %>
+							
+								<%- include('partials/_alerts'); %>
+
 								<div class="col-lg-12 blog-post-single">
 									<div class="blog-author">
 										<div class="author-bio">
@@ -320,11 +296,21 @@
 										</tr>
 										</thead>
 										<tbody>
+											<!-- TODO: make the role dynamic -->
 											<% for (let i=0;i<users.length;i++) { %>
 											<tr>
 												<td scope="row"><%= users[i]._id %></td>
 												<td><%= users[i].email %></td>
-												<td><%= users[i].role %></td>
+												
+													<td>
+														<select name="userRole" id="userRole">
+														<option value="" selected><%= users[i].role %></option>
+														<option value="student">student</option>
+														<option value="teacher">teacher</option>
+														<option value="admin">admin</option>
+													</select>
+												</td>
+											
 												<td><a href="/users/<%= users[i]._id %>?_method_DELETE" onclick="return confirm('ARE YOU SURE?')"><button class="btn btn-danger rounded-0 text-white"><span>DELETE</span></button></a></td>
 											</tr>
 											<% } %>

@@ -14,9 +14,11 @@ const router=express.Router();
  * Email should be unique
  * Email should be email format
  * password should not be empty
+ * TODO: add role validator-does not work now :)
  */
 router.route('/signup').post([
 body('name').not().isEmpty().withMessage('Please Enter Your Name'),
+body('role').not().isIn(['student','teacher']).withMessage('Please enter a valid role'),
 body('email').isEmail().withMessage('Please Enter a Valid Email')
 .custom((userEmail) => {
     //asynce çevirmek gerekebilir.

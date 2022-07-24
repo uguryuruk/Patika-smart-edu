@@ -31,7 +31,11 @@ const CourseSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-});
+}
+//instead of createdAt
+// ,{timestamps:true}
+
+);
 
 CourseSchema.pre('validate',function (next) {
     //we have used 'function' instead of arrow in order to catch 'this'.
